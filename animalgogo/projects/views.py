@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Project, Pledge
-from .serializers import ProjectSerializer, PledgeSerializer
+from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
 from django.http import Http404
 from rest_framework import status
 
@@ -47,6 +47,11 @@ class ProjectDetail(APIView):
            	return Project.objects.get(pk=pk)
       	except Project.DoesNotExist:
            	raise Http404
+
+    def get(self, request, pk):
+    	project = self.get_object(pk)
+    	serializer = ProjectDetailSerializer(project)
+    	return Response(serializer.data)
 
 # for /pledges/
 class PledgeList(APIView):
