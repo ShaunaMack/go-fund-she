@@ -24,7 +24,7 @@ class ProjectSerializer(serializers.Serializer):
     is_open = serializers.BooleanField()
     date_created = serializers.DateTimeField()
     owner = serializers.CharField(max_length=200)
-    # leaving the pledges out of list view so that we don't have to get 
+    # leaving the pledges out of list view so that we don't have to get
     # all of the pledges and all of the projects in one go
     # pledges = PledgeSerializer(many=True, read_only=True)
 
@@ -36,6 +36,6 @@ class ProjectSerializer(serializers.Serializer):
 
 class ProjectDetailSerializer(ProjectSerializer):
     # many=True tells the nested serializer to include a list of items
-    # read_only=True means it's only used for GET, not PUT 
+    # read_only=True means it's only used for GET, not PUT
     #   (which means you don't/can't provide pledges when updating a project)
     pledges = PledgeSerializer(many=True, read_only=True)

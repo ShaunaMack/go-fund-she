@@ -27,12 +27,12 @@ class ProjectList(APIView):
             serializer.save()
             # send the serialized (saved) data back in response body
             return Response(serializer.data,
-                 	status=status.HTTP_201_CREATED
-            )
+                            status=status.HTTP_201_CREATED
+                            )
         return Response(
-           	serializer.errors,
-           	status=status.HTTP_400_BAD_REQUEST
-       	)
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 # for /projects/<pk>
 class ProjectDetail(APIView):
@@ -41,17 +41,17 @@ class ProjectDetail(APIView):
     # def get_object(self, pk):
     #     return Project.objects.get(pk=pk)
 
-    # for GET /projects/<pk> 
+    # for GET /projects/<pk>
     def get_object(self, pk):
-      	try:
-           	return Project.objects.get(pk=pk)
-      	except Project.DoesNotExist:
-           	raise Http404
+        try:
+            return Project.objects.get(pk=pk)
+        except Project.DoesNotExist:
+            raise Http404
 
     def get(self, request, pk):
-    	project = self.get_object(pk)
-    	serializer = ProjectDetailSerializer(project)
-    	return Response(serializer.data)
+        project = self.get_object(pk)
+        serializer = ProjectDetailSerializer(project)
+        return Response(serializer.data)
 
 # for /pledges/
 class PledgeList(APIView):
@@ -61,7 +61,7 @@ class PledgeList(APIView):
         pledges = Pledge.objects.all()
         serializer = PledgeSerializer(pledges, many=True)
         return Response(serializer.data)
-    
+
     # POST /pledges/
     def post(self, request):
         serializer = PledgeSerializer(data=request.data)
