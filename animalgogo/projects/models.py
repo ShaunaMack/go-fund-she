@@ -17,6 +17,9 @@ class Project(models.Model):
         related_name='owner_projects'
     )
 
+    def __str__(self):
+        return f"{self.title}"
+
 
 class Pledge(models.Model):
     amount = models.IntegerField()
