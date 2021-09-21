@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath animalgogo animalgogo.wsgi --log-file -
