@@ -10,6 +10,7 @@ install dependencies `pip install -r requirements.txt`
 
 `cd animalgogo`
 
+make migrations `python manage.py makemigrations`
 run migrations `python manage.py migrate`
 
 create a superuser `python manage.py createsuperuser`
@@ -19,6 +20,8 @@ deactivate virtual server `deactivate`
 ### To run locally
 
 activate virtual environment `source venv/bin/activate`
+
+`cd animalgogo`
 
 run server `python manage.py runserver`
 
