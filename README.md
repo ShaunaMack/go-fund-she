@@ -1,6 +1,33 @@
 # go-fund-she
 
-deployed app https://fast-peak-84673.herokuapp.com/
+### To setup locally
+
+make sure you have python and pip installed
+
+activate virtual environment `source venv/bin/activate`
+
+install dependencies `pip install -r requirements.txt`
+
+`cd animalgogo`
+
+run migrations `python manage.py migrate`
+
+create a superuser `python manage.py createsuperuser`
+
+deactivate virtual server `deactivate`
+
+### To run locally
+
+activate virtual environment `source venv/bin/activate`
+
+run server `python manage.py runserver`
+
+deactivate virtual server `deactivate`
+
+### Deployment info
+
+App was deployed to Heroku but is no longer working
+https://fast-peak-84673.herokuapp.com/
 
 admin site can be accessed by superuser https://fast-peak-84673.herokuapp.com/admin
 
