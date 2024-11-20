@@ -29,10 +29,10 @@ deactivate virtual server `deactivate`
 
 ### Deployment info
 
-App was deployed to Heroku but is no longer working
-https://fast-peak-84673.herokuapp.com/
+App is deployed to Heroku
+[https://fast-peak-84673.herokuapp.com/](https://obscure-plateau-08295-a044e12e13c7.herokuapp.com/projects/)
 
-admin site can be accessed by superuser https://fast-peak-84673.herokuapp.com/admin
+admin site can be accessed by superuser [https://fast-peak-84673.herokuapp.com/admin](https://obscure-plateau-08295-a044e12e13c7.herokuapp.com/admin/)
 
 Endpoints:
 ![image](https://user-images.githubusercontent.com/17566798/134753792-ee134ffb-4b5a-4452-aef6-18d75acfdcba.png)
