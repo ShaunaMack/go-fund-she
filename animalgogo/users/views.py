@@ -2,6 +2,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 
@@ -68,3 +69,17 @@ class CustomUserDetail(APIView):
 
         user.delete()
         return Response({"200: User deleted successfully"}, status=status.HTTP_200_OK)
+
+
+# /users/me
+
+class MeDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+        })
