@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from .models import CustomUser
+from projects.models import Project, Pledge
 from .serializers import CustomUserSerializer
 
 # /users
@@ -78,8 +78,39 @@ class MeDetail(APIView):
 
     def get(self, request):
         user = request.user
+        # Fetch projects and pledges related to the user
+        projects = Project.objects.filter(owner=user)
+        pledges = Pledge.objects.filter(supporter=user)
+
+        # Serialize the data (update these serializers if necessary)
+        project_data = [
+            {
+                "id": project.id,
+                "title": project.title,
+                "description": project.description,
+                "goal": project.goal,
+                "is_open": project.is_open,
+                "date_created": project.date_created,
+            }
+            for project in projects
+        ]
+
+        pledge_data = [
+            {
+                "id": pledge.id,
+                "amount": pledge.amount,
+                "anonymous": pledge.anonymous,
+                "comment": pledge.comment,
+                "project": {"id": pledge.project.id, "title": pledge.project.title},
+            }
+            for pledge in pledges
+        ]
+
         return Response({
             "id": user.id,
             "username": user.username,
             "email": user.email,
+            "projects": project_data,
+            "pledges": pledge_data,
         })
+
